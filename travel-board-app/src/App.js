@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MyProvider } from './contexts/MyContext';
 
@@ -84,8 +84,9 @@ const Footer = styled.footer`
   background-color: black;
   color: white;
 `;
-
+import styles from '../src/components/DetailPost'
 const App = () => {
+
   return (
     <MyProvider>
       <PageContainer>
@@ -101,9 +102,11 @@ const App = () => {
             여기는 메인화면 그림입니다.
           </FirstArticle>
           <hr />
+
           여기는 게시글 자리입니다.
           게시글 컴포넌트 자리
           <BoardArticle />
+          
           <MoreBtn>MoreBtn</MoreBtn>
         </Section>
         <Footer>
