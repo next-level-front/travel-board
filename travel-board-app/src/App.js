@@ -84,7 +84,6 @@ const Footer = styled.footer`
   background-color: black;
   color: white;
 `;
-import styles from '../src/components/DetailPost'
 const App = () => {
 
   return (
