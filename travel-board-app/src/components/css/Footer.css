@@ -1,0 +1,14 @@
+.footer {
+    background: #4CB3AB;
+    color: white;
+    text-align: center;
+    padding: 2em 0;
+  }
+  
+  .footer .footer-logo {
+    background: #D9D9D9;
+    padding: 1em 2em;
+    margin: 0 auto;
+    display: inline-block;
+    border-radius: 4px;
+  }
