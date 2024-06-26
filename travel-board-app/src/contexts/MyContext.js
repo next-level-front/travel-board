@@ -14,9 +14,20 @@ export const MyProvider = ({ children }) => {
   const addData = (title, content) => {
     setData([...data, { id: data.length + 1, title, content }]);
   };
+  const updateData = (id, updateData) => {
+    setData((prevData) =>
+      prevData.map((data) =>
+        data.id === id ? { ...data, ...updateData } : data
+      )
+    );
+  };
+
+  const deleteData = (id) => {
+    setData((prevData) => prevData.filter((data) => data.id !== id));
+  };
 
   return (
-    <MyContext.Provider value={{ data, addData }}>
+    <MyContext.Provider value={{ data, addData, updateData, deleteData }}>
       {children}
     </MyContext.Provider>
   );
