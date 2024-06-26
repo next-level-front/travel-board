@@ -1,0 +1,102 @@
+/* 전체적인 폰트 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; 
+}
+
+/* 헤더 스타일 설정 */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 2px solid #4CB3AB;
+}
+
+/* 로고 박스 스타일 */
+.post-logo-box {
+    width: 100px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-logo-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 버튼 스타일 */
+.post-button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #4CB3AB;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 제목 섹션 스타일 */
+.post-title-section {
+    padding: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.post-title-box {
+    width: 60%;
+    height: 300px;
+    background-color: #E0D4C3;
+    border-radius: 5px;
+}
+
+/* 중단 섹션 스타일 설정 */
+.post-content-section {
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.post-content-box {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: relative;
+}
+
+.post-content {
+    width: 100%;
+    height: 200px;
+    background-color: #EEE;
+    border: 1px solid #E0E0E0;
+}
+
+/* 글쓰기 버튼 스타일 */
+.post-write-button {
+    position: absolute;
+    top: -40px; 
+    right: 0;
+    background-color: #4CB3AB;
+}
+
+/* 푸터 스타일 설정 */
+.post-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    border-top: 2px solid #4CB3AB; 
+}
