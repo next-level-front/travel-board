@@ -1,10 +1,14 @@
 import React from 'react';
 import {
-    Wrapper, Header, Logo, HomeBtn, PageForm, TitleForm, Title,
+    Wrapper, Logo, HomeBtn, PageForm, TitleForm, Title,
     DataForm, Writer, DataTime, Img, ImgForm, Imgs, ImgsForm, ContentContainer, Content,
-    RecForm, CommentForm, CommentStyle, CommentSection, NicknameInput, Comment, CommentInput, FileInput, SubmitButton, Footer, FooterLogo,
+    RecForm, CommentForm, CommentStyle, CommentSection, NicknameInput, Comment, CommentInput, SubmitButton, FooterLogo,
     Reclist
-} from './styles'; // styles.js로부터 스타일 컴포넌트 가져오기
+} from '../assets/css/Detailstyles'; // styles.js로부터 스타일 컴포넌트 가져오기
+
+import Header from './Header';
+import Footer from './Footer';
+
 
 const homeOnClick = () => {
     // 홈 버튼 클릭 시 동작 정의
@@ -74,13 +78,13 @@ function DetailPost() {
                 <ContentContainer>
                     <Content>
                         <p>
-                            여기에 내용 컴포넌트 들어가면 될듯?
+                            여기에 내용 컴포넌트
                         </p>
                         </Content>
                 </ContentContainer>
                 <RecForm>
                     <Reclist>
-                        추천리스트입니다. 이건...모르겠도다.
+                        추천리스트입니다.
                         </Reclist>
                     </RecForm>
 
