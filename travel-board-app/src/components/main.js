@@ -14,7 +14,7 @@ const postContent = 'post-content';
 const postWriteButton = 'post-write-button';
 const postFooter = 'post-footer';
 
-function App() {
+function main() {
     return (
         <MyProvider>
             <div>
@@ -54,4 +54,4 @@ function App() {
     );
 }
 
-export default App;
+export default Main;
