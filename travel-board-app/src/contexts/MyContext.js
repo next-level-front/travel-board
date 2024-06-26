@@ -24,7 +24,7 @@ export const MyProvider = ({ children }) => {
   }, []);
 
   const addData = (title, content) => {
-    const newData = [...data, { id: data.length + 1, title, content }];
+    const newData = [...data, { id: data.length + 1, title, content, author, image, timestamp:new Date().toLocaleString() }];
     setData(newData);
     saveDataToLocalStorage('posts', newData);
   };
