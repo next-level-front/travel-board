@@ -8,7 +8,7 @@ import { MyProvider } from "./contexts/MyContext";
 ReactDOM.render(
   <React.StrictMode>
     <MyProvider>
-      <DetailPost />
+      <App />
     </MyProvider>
   </React.StrictMode>,
   document.getElementById("root")

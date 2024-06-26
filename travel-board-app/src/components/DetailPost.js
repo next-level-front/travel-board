@@ -6,6 +6,7 @@ import {
     Reclist, Reclists
 } from '../components/css/Detailstyles'; // Detailstyles.js로부터 스타일 컴포넌트 가져오기
 import MyContext from '../contexts/MyContext';
+import UpdatePage from './UpdatePage/UpdatePage';
 import CreatePost from './CreatePost';
 
 
@@ -19,10 +20,10 @@ const DetailPost = () => {
         { id: 2, text: '부럽다!' },
         { id: 3, text: '나도 가고싶다 ㅠㅠ' },
     ]);
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [content, setContent] = useState('');
-    const [images, setImages] = useState([]);
+    // const [title, setTitle] = useState('');
+    // const [author, setAuthor] = useState('');
+    // const [content, setContent] = useState('');
+    // const [images, setImages] = useState([]);
 
     const submitBtn = (e) => {
         e.preventDefault();
@@ -35,16 +36,15 @@ const DetailPost = () => {
     }
 
     if (edit) {
-        return <CreatePost />;
+        return <UpdatePage />;
     }
 
     const modifyBtn = (e) => {
         e.preventDefault();
         let modifyPwd = prompt("수정하려면 패스워드를 입력하세요:", "");
-        let createPwd = 123;
-        if(window.confirm('수정하러 가시겠습니까?') && modifyPwd === createPwd.toString()) {
+        let updatePwd = 123;
+        if(window.confirm('수정하러 가시겠습니까?') && modifyPwd === updatePwd.toString()) {
             alert('수정페이지로 이동합니다.');
-            //navi..?
             setIsEdit(true);
         } else {
             alert('패스워드가 틀립니다.');
@@ -63,11 +63,11 @@ const DetailPost = () => {
                 <TitleForm>
                     <ModifyButton onClick={modifyBtn}>수정하기</ModifyButton>
                     <Title>
-                        <span>제목 : {title}</span>
+                        <span>제목 : </span>
                     </Title>
                     <DataForm>
                         <Writer>
-                            <span>작성자 : {author}</span>
+                            <span>작성자 : </span>
                         </Writer>
                         <DataTime>
                             <span>작성시간: </span>
