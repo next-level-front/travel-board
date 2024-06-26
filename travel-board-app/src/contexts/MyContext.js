@@ -1,22 +1,50 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect} from 'react';
 
 // Context 생성
 const MyContext = createContext();
 
+// 로컬 스토리지에서 데이터 가져오기
+const loadDataFromLocalStorage = (key) => {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : [];
+};
+
+// 로컬 스토리지에 데이터 저장하기
+const saveDataToLocalStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
+
 // Provider 컴포넌트
 export const MyProvider = ({ children }) => {
-  const [data, setData] = useState([
-    { id: 1, title: '게시글 1', content: '첫 번째 게시글 내용' },
-    { id: 2, title: '게시글 2', content: '두 번째 게시글 내용' },
-    { id: 3, title: '게시글 3', content: '세 번째 게시글 내용' }
-  ]);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const storedData = loadDataFromLocalStorage('posts');
+    setData(storedData);
+  }, []);
 
   const addData = (title, content) => {
-    setData([...data, { id: data.length + 1, title, content }]);
+    const newData = [...data, { id: data.length + 1, title, content }];
+    setData(newData);
+    saveDataToLocalStorage('posts', newData);
+  };
+  
+  const updateData = (id, updateData) => {
+    const updatedData = data.map((item) =>
+      item.id === id ? { ...item, ...updateData } : item
+    );
+    setData(updatedData);
+    saveDataToLocalStorage('posts', updatedData);
+  };
+
+  const deleteData = (id) => {
+    const filteredData = data.filter((item) => item.id !== id);
+    setData(filteredData);
+    saveDataToLocalStorage('posts', filteredData);
   };
 
   return (
-    <MyContext.Provider value={{ data, addData }}>
+    <MyContext.Provider value={{ data, addData, updateData, deleteData }}>
       {children}
     </MyContext.Provider>
   );
