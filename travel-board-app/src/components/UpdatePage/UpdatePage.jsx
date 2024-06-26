@@ -91,16 +91,17 @@ const ImageWrap = styled.div`
 
 const UpdatePage = ({ post, handleView }) => {
   const { updateData, deleteData } = useContext(MyContext);
-  const [title, setTitle] = useState(post.title);
-  const [content, setContent] = useState(post.content);
-  const [images, setImages] = useState(post.images);
+  const [title, setTitle] = useState(post?.title ?? "");
+  const [content, setContent] = useState(post?.content ?? "");
+  const [images, setImages] = useState(post?.images ?? null);
   const [mainImage, setMainImage] = useState(images ? images[0] : null);
   //onSubmit UpdateData
   const onSubmit = (data) => {
     try {
-      updateData(post.id, data);
+      updateData(post?.id, data);
     } catch (error) {
       alert("업데이트 도중 에러가 발생하였습니다.");
+      console.log(error);
       return;
     }
     alert("업데이트가 완료되었습니다.");
@@ -110,28 +111,27 @@ const UpdatePage = ({ post, handleView }) => {
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
 
-    if (files.length + images.length > 5) {
+    if (files.length + images?.length > 5) {
       alert("You can upload up to 5 images.");
       return;
     } else {
       files.forEach((file) => {
         const reader = new FileReader();
         reader.onload = () => {
-          setImages((prevImages) => [...prevImages, reader.result]);
+          setImages((prevImages) => [...(prevImages ?? []), reader.result]);
         };
         reader.readAsDataURL(file);
       });
     }
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     let updatePost = {
-      id: post.id,
+      id: post?.id,
       title,
-      author: post.author,
+      author: post?.author,
       content,
-      timestamp: post.timestamp,
+      timestamp: post?.timestamp,
       images,
     };
     onSubmit(updatePost);
@@ -151,9 +151,9 @@ const UpdatePage = ({ post, handleView }) => {
     setContent((prev) => e.target.value);
   };
   const handlePostDelete = () => {
-    deleteData(post.id);
+    deleteData(post?.id);
     //navigate Logic
-    handleView("posts");
+    handleView("home");
   };
   return (
     <>
@@ -161,7 +161,7 @@ const UpdatePage = ({ post, handleView }) => {
 
       <UpdateContainer>
         <form onSubmit={handleSubmit}>
-          <input type="hidden" name="id" id="id" value={post.id} />
+          <input type="hidden" name="id" id="id" value={post?.id} />
           <FormGroup>
             <Label>Title</Label>
             <Input value={title} onChange={handleTitleChange} name="title" />
@@ -169,11 +169,11 @@ const UpdatePage = ({ post, handleView }) => {
           <FormSubGroup>
             <FormGroup>
               <Label>Author</Label>
-              <Input value={post.author} readOnly name="author" />
+              <Input value={post?.author} readOnly name="author" />
             </FormGroup>
             <FormGroup>
               <Label>CreateTime</Label>
-              <Input value={post.timestamp} readOnly name="timestamp" />
+              <Input value={post?.timestamp} readOnly name="timestamp" />
             </FormGroup>
           </FormSubGroup>
           <FormGroup>
