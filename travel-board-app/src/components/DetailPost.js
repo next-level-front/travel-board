@@ -1,33 +1,54 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
-    Wrapper, PageForm, TitleForm, Title,
+    Wrapper, ModifyButton, PageForm, TitleForm, Title,
     DataForm, Writer, DataTime, Img, ImgForm, Imgs, ImgsForm, ContentContainer, Content,
     CommentForm, CommentStyle, CommentLi, Comment, CommentUl, CommentInput, SubmitButton,
     Reclist, Reclists
-} from '../components/css/Detailstyles'; // styles.js로부터 스타일 컴포넌트 가져오기////
+} from '../components/css/Detailstyles'; // Detailstyles.js로부터 스타일 컴포넌트 가져오기
+import MyContext from '../contexts/MyContext';
+import CreatePost from './CreatePost';
 
 
-function DetailPost() {
+const DetailPost = () => {
+    const { data, updateData } = useContext(MyContext);
+    const [edit, setIsEdit] = useState(false);
 
     const [commentInput, setCommentInput] = useState('');
     const [comments, setComments] = useState([
-        { id: 1, text: '안녕!' },
-        { id: 2, text: '여행 게시판이야!' },
-        { id: 3, text: '잘부탁해!' },
+        { id: 1, text: '우와! 멋지다!' },
+        { id: 2, text: '부럽다!' },
+        { id: 3, text: '나도 가고싶다 ㅠㅠ' },
     ]);
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [content, setContent] = useState('');
+    const [images, setImages] = useState([]);
 
-    const handleComment = (e) => {
-        setCommentInput(e.target.value);
-    }
-
-    const submitbtn = (e) => {
+    const submitBtn = (e) => {
         e.preventDefault();
         const commentInputs = commentInput.trim()
         if(commentInputs) {
-            const newComment = {id: commentInput.length, text: commentInput, };
+            const newComment = {id: commentInput.length, text: commentInput};
             setComments([...comments, newComment]);
             setCommentInput('');
-        } else {}
+        }
+    }
+
+    if (edit) {
+        return <CreatePost />;
+    }
+
+    const modifyBtn = (e) => {
+        e.preventDefault();
+        let modifyPwd = prompt("수정하려면 패스워드를 입력하세요:", "");
+        let createPwd = 123;
+        if(window.confirm('수정하러 가시겠습니까?') && modifyPwd === createPwd.toString()) {
+            alert('수정페이지로 이동합니다.');
+            //navi..?
+            setIsEdit(true);
+        } else {
+            alert('패스워드가 틀립니다.');
+        }
     }
 
     const imgs = [
@@ -40,12 +61,13 @@ function DetailPost() {
         <Wrapper>
             <PageForm>
                 <TitleForm>
+                    <ModifyButton onClick={modifyBtn}>수정하기</ModifyButton>
                     <Title>
-                        <span>제목</span>
+                        <span>제목 : {title}</span>
                     </Title>
                     <DataForm>
                         <Writer>
-                            <span>작성자</span>
+                            <span>작성자 : {author}</span>
                         </Writer>
                         <DataTime>
                             <span>작성시간: </span>
@@ -69,7 +91,7 @@ function DetailPost() {
                     <Content>
                         <p>
                             메인넣기
-                            <contentmain/>
+                            
                         </p>
                         </Content>
                 </ContentContainer>
@@ -91,9 +113,9 @@ function DetailPost() {
                     <CommentInput
                     placeholder="댓글을 입력하세요"
                     value={commentInput}
-                    onChange={handleComment} 
+                    onChange={(e) => {setCommentInput(e.target.value)}}
                     rows="4" />
-                    <SubmitButton onClick={submitbtn}
+                    <SubmitButton onClick={submitBtn}
                     >
                     보내기
                     </SubmitButton>

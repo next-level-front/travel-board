@@ -12,12 +12,12 @@ export const Wrapper = styled.div`
     font-family: "Noto Sans KR", sans-serif;
 `;
 
-// 홈버튼
-export const HomeBtn = styled.button`
+// 수정하기버튼
+export const ModifyButton = styled.button`
     width: 100px;
     height: 40px;
     border-radius: 5px;
-    margin: 25px;
+    margin: 0 auto;
     cursor: pointer;
     border: none;
     background-color: #4CB3AB;
@@ -112,7 +112,7 @@ export const Imgs = styled.div`
 
 //내용 컨테이너
 export const ContentContainer = styled.div`
-    width: 100%;
+    width: 99%;
     height: 400px;
     border: 1px solid #000;
     margin-bottom: 20px;
@@ -172,22 +172,14 @@ export const Comment = styled.p`
     line-height: 1.7;
 `;
 
-// export const NicknameInput = styled.input`
-//     width: 100%;
-//     max-width: 300px;
-//     padding: 10px;
-//     margin-bottom: 10px;
-//     border: 1px solid #ccc;
-//     border-radius: 5px;
-// `;
-
-export const CommentUl = styled.ul`
+export const CommentUl = styled.div`
+    margin-left: 20px;
 `;
 
-export const CommentInput = styled.textarea`
-    width: 98%;
+export const CommentInput = styled.input`
+    width: 89%;
+    height: 30px;
     padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: none;
@@ -201,7 +193,10 @@ export const CommentLi = styled.div`
 //보내기 버튼
 export const SubmitButton = styled.button`
     width: 100px;
+    height: 50px;
     padding: 10px;
+    margin-top: 30px;
+    margin-left: 10px;
     background-color: #4CB3AB;
     color: white;
     border: none;
