@@ -89,21 +89,22 @@ const ImageWrap = styled.div`
   justifycontent: spaceBetween;
 `;
 
-const UpdatePage = (props) => {
-  const { data, updateData, deleteData } = useContext(MyContext);
-  const [title, setTitle] = useState(data[0].title);
-  const [content, setContent] = useState(data[0].content);
-  const [images, setImages] = useState(data[0].images);
-  const [mainImage, setMainImage] = useState(images[0]);
+const UpdatePage = ({ post, handleView }) => {
+  const { updateData, deleteData } = useContext(MyContext);
+  const [title, setTitle] = useState(post.title);
+  const [content, setContent] = useState(post.content);
+  const [images, setImages] = useState(post.images);
+  const [mainImage, setMainImage] = useState(images ? images[0] : null);
   //onSubmit UpdateData
   const onSubmit = (data) => {
     try {
-      updateData(data.id, data);
+      updateData(post.id, data);
     } catch (error) {
       alert("업데이트 도중 에러가 발생하였습니다.");
       return;
     }
     alert("업데이트가 완료되었습니다.");
+    handleView("home");
   };
 
   const handleImageUpload = (event) => {
@@ -122,14 +123,15 @@ const UpdatePage = (props) => {
       });
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let updatePost = {
-      id: data[0].id,
+      id: post.id,
       title,
-      author: data[0].author,
+      author: post.author,
       content,
-      createTime: data[0].createTime,
+      timestamp: post.timestamp,
       images,
     };
     onSubmit(updatePost);
@@ -149,8 +151,9 @@ const UpdatePage = (props) => {
     setContent((prev) => e.target.value);
   };
   const handlePostDelete = () => {
-    deleteData(data[0].id);
+    deleteData(post.id);
     //navigate Logic
+    handleView("posts");
   };
   return (
     <>
@@ -158,7 +161,7 @@ const UpdatePage = (props) => {
 
       <UpdateContainer>
         <form onSubmit={handleSubmit}>
-          <input type="hidden" name="id" id="id" value={data[0].id} />
+          <input type="hidden" name="id" id="id" value={post.id} />
           <FormGroup>
             <Label>Title</Label>
             <Input value={title} onChange={handleTitleChange} name="title" />
@@ -166,11 +169,11 @@ const UpdatePage = (props) => {
           <FormSubGroup>
             <FormGroup>
               <Label>Author</Label>
-              <Input value={data[0].author} readOnly name="author" />
+              <Input value={post.author} readOnly name="author" />
             </FormGroup>
             <FormGroup>
               <Label>CreateTime</Label>
-              <Input value={data[0].createTime} readOnly name="createTime" />
+              <Input value={post.timestamp} readOnly name="timestamp" />
             </FormGroup>
           </FormSubGroup>
           <FormGroup>
@@ -194,35 +197,36 @@ const UpdatePage = (props) => {
               onChange={handleImageUpload}
             />
             <ImageWrap>
-              {images.map((image, index) => (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
-                  }}
-                  key={index}
-                >
-                  <img
-                    src={image}
-                    alt={`Image ${index + 1}`}
-                    onClick={() => handleMainImageSelect(image)}
+              {images &&
+                images.map((image, index) => (
+                  <div
                     style={{
-                      cursor: "pointer",
-                      width: "100px",
-                      height: "100px",
-                      margin: "10px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flexDirection: "column",
                     }}
-                  />
-                  <DeleteButton
-                    type="button"
-                    onClick={() => handleImageDelete(index)}
+                    key={index}
                   >
-                    Delete Image
-                  </DeleteButton>
-                </div>
-              ))}
+                    <img
+                      src={image}
+                      alt={`Image ${index + 1}`}
+                      onClick={() => handleMainImageSelect(image)}
+                      style={{
+                        cursor: "pointer",
+                        width: "100px",
+                        height: "100px",
+                        margin: "10px",
+                      }}
+                    />
+                    <DeleteButton
+                      type="button"
+                      onClick={() => handleImageDelete(index)}
+                    >
+                      Delete Image
+                    </DeleteButton>
+                  </div>
+                ))}
             </ImageWrap>
           </FormGroup>
           <ButtonWrap>
