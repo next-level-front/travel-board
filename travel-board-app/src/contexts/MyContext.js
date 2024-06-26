@@ -23,7 +23,7 @@ export const MyProvider = ({ children }) => {
     setData(storedData);
   }, []);
 
-  const addData = (title, content) => {
+  const addData = (title, content, author, image) => {
     const newData = [...data, { id: data.length + 1, title, content, author, image, timestamp:new Date().toLocaleString() }];
     setData(newData);
     saveDataToLocalStorage('posts', newData);
@@ -42,17 +42,7 @@ export const MyProvider = ({ children }) => {
     setData(filteredData);
     saveDataToLocalStorage('posts', filteredData);
   };
-  const updateData = (id, updateData) => {
-    setData((prevData) =>
-      prevData.map((data) =>
-        data.id === id ? { ...data, ...updateData } : data
-      )
-    );
-  };
-
-  const deleteData = (id) => {
-    setData((prevData) => prevData.filter((data) => data.id !== id));
-  };
+  
 
   return (
     <MyContext.Provider value={{ data, addData, updateData, deleteData }}>
