@@ -89,8 +89,6 @@ const CreatePost = ({ post, handleView }) => {
   const { addData } = useContext(MyContext);
 
   const [author, setAuthor] = useState(''); // 작성자(익명, 5자 이하 닉네임)
-
-  const [date, setDate] = useState(new Date()); // 작성일자
   const [title, setTitle] = useState(''); // 제목
   const [content, setContent] = useState(''); // 내용
   const [images, setImages] = useState([]); // 첨부파일(사진)
@@ -112,6 +110,17 @@ const CreatePost = ({ post, handleView }) => {
     }
     alert("게시글이 등록되었습니다.");
     handleView("home");
+  };
+
+  const onCancel = () => {
+    const result = window.confirm("작성을 취소하시겠습니까?");
+    if (result) {
+      // 확인: 작성 취소됨
+      handleView("home");
+    } else {
+      // 취소: 작성 계속함
+    }
+
   };
 
   const handleImageChange = (e) => {
@@ -141,6 +150,7 @@ const CreatePost = ({ post, handleView }) => {
   const handleCancel = () => {
     // 취소 버튼 클릭 시 홈 버튼으로 돌아감
     console.log('취소 버튼 클릭');
+    onCancel();
   };
 
   const handleSubmit = (e) => {
@@ -164,24 +174,20 @@ const CreatePost = ({ post, handleView }) => {
           <FormGroup>
             <div>
               <Label>닉네임:</Label>
-              <Input type="text" value={author} maxLength={5} onChange={handleAuthorChange} placeholder="5글자 이하" />
-            </div>
-            <div>
-              <Label>작성일자:</Label>
-              <Input type="datetime-local" value={date.toISOString().substring(0, 16)} disabled />
+              <Input type="text" value={author} maxLength={5} onChange={handleAuthorChange} placeholder="5글자 이하" required />
             </div>
             <div>
               <Label>제목:</Label>
-              <Input type="text" value={title} onChange={handleTitleChange} placeholder="제목을 입력하세요" />
+              <Input type="text" value={title} onChange={handleTitleChange} placeholder="제목을 입력하세요" required />
             </div>
 
             <div>
               <Label>내용:</Label>
-              <Textarea value={content} onChange={handleContentChange} placeholder="내용을 입력하세요" />
+              <Textarea value={content} onChange={handleContentChange} placeholder="내용을 입력하세요" required />
             </div>
             <div>
               <Label>첨부파일(사진, 최대 5장):</Label>
-              <Input type="file" accept="image/*" multiple onChange={handleImageChange} />
+              <Input type="file" accept="image/*" multiple onChange={handleImageChange} required />
             </div>
 
             <ButtonWrap>
