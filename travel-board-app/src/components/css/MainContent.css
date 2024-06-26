@@ -1,47 +1,107 @@
+/* main-content 전체영역*/
 .main-content {
-    padding: 2em;
-    text-align: center;
-  }
-  
-  .main-content .btn1 {
-    font-size: 1em;
-    color: #FFFFFF;
-    background-color: #4CB3AB;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    cursor: pointer;
-    justify-content: right;
-  }
+  padding: 2em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
 
-  .main-content .btn2 {
-    font-size: 1em;
-    color: #FFFFFF;
-    background-color: #4CB3AB;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    cursor: pointer;
-  }
-  .main-content .btn1:hover {
-    background-color: #3a8f87;
-  }
-  
-  .main-content .btn2:hover {
-    border-color: #4CB3AB;
-    background-color: #ffffff;
-    color: #32A89F;
-  }
-  
-  .main-content .content-area {
-    margin: 2em 0;
-    display: flex;
-    justify-content: center;
-  }
-  
+/* 메인이미지 영역 */
+.photo-area {
+  background-color: #ecf2f1;
+  width: 80%;
+  height: 400px;
+  margin: 20px auto;
+}
 
-  .main-content .rectangle {
-    background: #32A89F;
-    width: 60%;
-    height: 300px;
-  }
+
+.main-banner {
+  width: 90%;
+  height: 360px;
+  margin: 20px auto;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 글쓰기 버튼 */
+.main-content .btn1 {
+  font-size: 1em;
+  color: #FFFFFF;
+  background-color: #4CB3AB;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.main-content .btn1:hover {
+  background-color: #3a8f87;
+}
+
+
+/* 무한스크롤 혹은 더보기 버튼 */
+.main-content .btn2 {
+  font-size: 1em;
+  color: #FFFFFF;
+  background-color: #4CB3AB;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.main-content .btn2:hover {
+  border-color: #4CB3AB;
+  background-color: #ffffff;
+  color: #32A89F;
+}
+
+
+/* 콘텐츠 영역 */
+
+.content-area {
+  width: 80%;
+  margin: 20px auto;
+}
+
+
+
+/* 포스트 영역 */
+
+.post {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.post img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.post .content {
+  text-align: left;
+}
+
+.post .title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #31635f;
+}
+
+.post .description {
+  font-size: 14px;
+  color: #4CB3AB;
+}
