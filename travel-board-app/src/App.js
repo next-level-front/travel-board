@@ -58,7 +58,9 @@ function App() {
   return (
     <div className="app-container">
       <Header />
-      <main>{content}</main>
+      <main>
+        <MainContent />
+      </main>
       <Footer />
     </div>
   );
