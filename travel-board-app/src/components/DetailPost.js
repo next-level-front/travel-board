@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import {
     Wrapper, PageForm, TitleForm, Title,
     DataForm, Writer, DataTime, Img, ImgForm, Imgs, ImgsForm, ContentContainer, Content,
-    RecForm, CommentForm, CommentStyle, CommentLi, Comment, CommentUl, CommentInput, SubmitButton,
-    Reclist,
-    Reclists
+    CommentForm, CommentStyle, CommentLi, Comment, CommentUl, CommentInput, SubmitButton,
+    Reclist, Reclists
 } from './Detailstyles'; // styles.js로부터 스타일 컴포넌트 가져오기
 
 function DetailPost() {
