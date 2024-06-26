@@ -174,20 +174,20 @@ const CreatePost = ({ post, handleView }) => {
           <FormGroup>
             <div>
               <Label>닉네임:</Label>
-              <Input type="text" value={author} maxLength={5} onChange={handleAuthorChange} placeholder="5글자 이하" required />
+              <Input type="text" value={author} maxLength={5} onChange={handleAuthorChange} placeholder="5글자 이하" />
             </div>
             <div>
               <Label>제목:</Label>
-              <Input type="text" value={title} onChange={handleTitleChange} placeholder="제목을 입력하세요" required />
+              <Input type="text" value={title} onChange={handleTitleChange} placeholder="제목을 입력하세요" />
             </div>
 
             <div>
               <Label>내용:</Label>
-              <Textarea value={content} onChange={handleContentChange} placeholder="내용을 입력하세요" required />
+              <Textarea value={content} onChange={handleContentChange} placeholder="내용을 입력하세요" />
             </div>
             <div>
               <Label>첨부파일(사진, 최대 5장):</Label>
-              <Input type="file" accept="image/*" multiple onChange={handleImageChange} required />
+              <Input type="file" accept="image/*" multiple onChange={handleImageChange} />
             </div>
 
             <ButtonWrap>
