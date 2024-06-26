@@ -4,7 +4,8 @@ import {
     DataForm, Writer, DataTime, Img, ImgForm, Imgs, ImgsForm, ContentContainer, Content,
     CommentForm, CommentStyle, CommentLi, Comment, CommentUl, CommentInput, SubmitButton,
     Reclist, Reclists
-} from '../components/css/Detailstyles'; // styles.js로부터 스타일 컴포넌트 가져오기
+} from '../components/css/Detailstyles'; // styles.js로부터 스타일 컴포넌트 가져오기////
+
 
 function DetailPost() {
 
