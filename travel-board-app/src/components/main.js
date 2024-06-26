@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/stylesmain.css';
-import logo from '../assets/logo.png';
+import logo from '../../public/logo.png';
 import { MyProvider } from '../contexts/context';
 
 const postHeader = 'post-header';
