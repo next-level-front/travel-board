@@ -6,6 +6,7 @@ import UpdatePage from "./components/UpdatePage/UpdatePage";
 import "./App.css";
 import "./../src/components/css/MainContent.css";
 import MyContext from "./contexts/MyContext";
+import CreatePost from "./components/CreatePost";
 
 function App() {
   const { data } = useContext(MyContext);
@@ -35,7 +36,9 @@ function App() {
       content = <div className="scroll-view">Scroll View</div>;
       break;
     case "create":
-      content = <div className="create-view">Create View</div>;
+      content = <div className="create-view">
+        <CreatePost post={seletedItem} handleView={setView} />
+      </div>;
       break;
     case "update":
       content = (
