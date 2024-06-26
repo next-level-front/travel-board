@@ -12,27 +12,6 @@ export const Wrapper = styled.div`
     font-family: "Noto Sans KR", sans-serif;
 `;
 
-// 헤더
-export const Header = styled.header`
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    position: sticky;
-    top: 0px;
-    z-index: 10;
-`;
-
-export const Logo = styled.div`
-  width: 80px;
-  height: 80px;
-  background-image: url(${logo});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
 // 홈버튼
 export const HomeBtn = styled.button`
     width: 100px;
@@ -108,10 +87,10 @@ export const ImgForm = styled.div`
 export const Img = styled.img`
     width: 300px;
     height: 300px;
-    padding: 10px;
     background-image: url(${logo});
     background-size: cover;
     background-position: center;
+    objectFit: cover;
 `;
 
 // 하위 이미지 폼
@@ -145,22 +124,29 @@ export const Content = styled.div`
     padding: 10px;
 `;
 
-// 추천 리스트 폼
-export const RecForm = styled.div`
-    width: 100%;
-    height: 300px;
-    border: 1px solid #000;
-    margin-bottom: 20px;
-`;
 
-// 추천 리스트
-export const Reclist = styled.div`
+
+// 추천 리스트폼
+export const Reclist = styled.ul`
     margin: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #f9f9f9;
 `;
+
+// 추천 리스트
+export const Reclists = styled.li`
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+`;
+
+
 
 // 댓글 폼
 export const CommentForm = styled.div`
@@ -186,13 +172,16 @@ export const Comment = styled.p`
     line-height: 1.7;
 `;
 
-export const NicknameInput = styled.input`
-    width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+// export const NicknameInput = styled.input`
+//     width: 100%;
+//     max-width: 300px;
+//     padding: 10px;
+//     margin-bottom: 10px;
+//     border: 1px solid #ccc;
+//     border-radius: 5px;
+// `;
+
+export const CommentUl = styled.ul`
 `;
 
 export const CommentInput = styled.textarea`
@@ -204,13 +193,10 @@ export const CommentInput = styled.textarea`
     resize: none;
 `;
 
-export const CommentSection = styled.div`
+export const CommentLi = styled.div`
     margin: 20px 0;
 `;
 
-export const FileInput = styled.input`
-    margin-left: 10px;
-`;
 
 //보내기 버튼
 export const SubmitButton = styled.button`
@@ -226,25 +212,4 @@ export const SubmitButton = styled.button`
     &:hover {
         background-color: #3A9B8B;
     }
-`;
-
-// 푸터
-export const Footer = styled.footer`
-    margin-top: 30px;
-    height: 80px;
-    background-color: white;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-//푸터 로고
-export const FooterLogo = styled.div`
-    width: 80px;
-    height: 80px;
-    background-image: url(${logo});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 `;
