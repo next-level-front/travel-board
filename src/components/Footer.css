@@ -1,0 +1,55 @@
+
+  .footer {
+    background: #4CB3AB;
+    color: white;
+    text-align: center;
+    padding: 2em 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+   /* next level 로고 */
+  .footer .logo {
+    background: #f9f7f7;
+    padding: 1em 1em;
+    margin: 0 auto;
+    display: inline-block;
+    border-radius: 100px;
+  }
+
+  .logo img {
+    width: 100px; 
+    height: auto; 
+  }
+
+
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.left-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.right-info {
+  text-align: right;
+}
+
+.footer .udemy-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.footer .left-info p,
+.footer .right-info p {
+  margin: 0.5em 0;
+}

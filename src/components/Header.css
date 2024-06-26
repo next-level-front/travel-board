@@ -1,0 +1,27 @@
+.header {
+    background: #d3ebe9;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+  }
+  
+  .logo img {
+    width: 100px; 
+    height: auto; 
+  }
+  
+  .header .btn {
+    font-size: 1em;
+    color: #FFFFFF;
+    background-color: #4CB3AB;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .header .btn:hover {
+    background-color: #3a8f87;
+  }
