@@ -1,7 +1,7 @@
 import React from 'react';
-import './stylespost.css';
-import logo from './logo.png';
-import { MyProvider } from './context';
+import '../css/stylespost.css';
+import logo from '../assets/logo.png'; 
+import { MyProvider } from '../contexts/context';
 
 const postHeader = 'post-header';
 const postLogoBox = 'post-logo-box';
