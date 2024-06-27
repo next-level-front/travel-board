@@ -28,6 +28,11 @@ export const MyProvider = ({ children }) => {
       password: "1234",
       content: `여행게시글 본문내용1`,
       timestamp: new Date().toLocaleString(),
+      comments: [
+        { id: 1, text: "우와! 멋지다!" },
+        { id: 2, text: "부럽다!" },
+        { id: 3, text: "나도 가고싶다 ㅠㅠ" },
+      ],
     },
     {
       id: 2,
@@ -116,10 +121,12 @@ export const MyProvider = ({ children }) => {
     const storedData = loadDataFromLocalStorage("posts");
     if (storedData.length) {
       setData(storedData);
+    } else {
+      saveDataToLocalStorage("posts", data);
     }
   }, []);
 
-  const addData = (title, content, author, images, password) => {
+  const addData = (title, content, author, images, password, comments) => {
     const newData = [
       ...data,
       {
@@ -129,6 +136,7 @@ export const MyProvider = ({ children }) => {
         author,
         images,
         password,
+        comments,
         timestamp: new Date().toLocaleString(),
       },
     ];
