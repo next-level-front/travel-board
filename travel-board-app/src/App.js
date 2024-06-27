@@ -7,15 +7,19 @@ import "./App.css";
 import "./../src/components/css/MainContent.css";
 import MyContext from "./contexts/MyContext";
 import CreatePost from "./components/CreatePost";
-import Posts from "./components/Posts";
+import DetailPost from "./components/DetailPost";
+//import Posts from "./components/Posts";
 
 function App() {
   const { data } = useContext(MyContext);
   const [view, setView] = useState("home");
   const [seletedItem, setSelectedItem] = useState(data?.[0]);
+
   useEffect(() => {
     setSelectedItem(data?.[0]);
   }, [data]);
+
+  const comment = seletedItem.comments;
 
   let content;
   switch (view) {
@@ -32,6 +36,11 @@ function App() {
             <button className="btn" onClick={() => setView("update")}>
               Update
             </button>
+
+            <button className="btn" onClick={() => setView("details")}>
+              detail
+            </button>
+
             <MainContent posts={data} />
           </div>
         </div>
@@ -53,6 +62,15 @@ function App() {
           <UpdatePage post={seletedItem} handleView={setView} />
         </div>
       );
+      break;
+
+    case "details":
+      content = (
+        <div className="content-area">
+          <DetailPost post={seletedItem} comment1={comment} handleView={setView} />
+        </div>
+      );
+
       break;
     default:
       content = (

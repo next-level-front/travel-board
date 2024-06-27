@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import DetailPost from "./components/DetailPost";
+//import Posts from "./components/Posts";
 import { MyProvider } from "./contexts/MyContext";
 
 ReactDOM.render(

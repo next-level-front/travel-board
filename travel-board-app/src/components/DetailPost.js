@@ -5,25 +5,14 @@ import {
     CommentForm, CommentStyle, CommentLi, Comment, CommentUl, CommentInput, SubmitButton,
     Reclist, Reclists
 } from '../components/css/Detailstyles'; // Detailstyles.js로부터 스타일 컴포넌트 가져오기
-import MyContext from '../contexts/MyContext';
 import UpdatePage from './UpdatePage/UpdatePage';
-import CreatePost from './CreatePost';
 
 
-const DetailPost = () => {
-    const { data, updateData } = useContext(MyContext);
-    const [edit, setIsEdit] = useState(false);
-
+const DetailPost = ({post, comment1, handleView}) => {
+    const { title, author, images, timestamp, content, comment} = post;
     const [commentInput, setCommentInput] = useState('');
-    const [comments, setComments] = useState([
-        { id: 1, text: '우와! 멋지다!' },
-        { id: 2, text: '부럽다!' },
-        { id: 3, text: '나도 가고싶다 ㅠㅠ' },
-    ]);
-    // const [title, setTitle] = useState('');
-    // const [author, setAuthor] = useState('');
-    // const [content, setContent] = useState('');
-    // const [images, setImages] = useState([]);
+    const [comments, setComments] = useState(comment);
+    const [password, setPassword] = useState(null);
 
     const submitBtn = (e) => {
         e.preventDefault();
@@ -35,64 +24,51 @@ const DetailPost = () => {
         }
     }
 
-    if (edit) {
-        return <UpdatePage />;
-    }
-
     const modifyBtn = (e) => {
         e.preventDefault();
         let modifyPwd = prompt("수정하려면 패스워드를 입력하세요:", "");
-        let updatePwd = 123;
+        let updatePwd = 1234;
         if(window.confirm('수정하러 가시겠습니까?') && modifyPwd === updatePwd.toString()) {
             alert('수정페이지로 이동합니다.');
-            setIsEdit(true);
+            handleView("update");
         } else {
             alert('패스워드가 틀립니다.');
         }
     }
-
-    const imgs = [
-        {id: 1, text: '첫 번째 이미지입니다.'},
-        {id: 2, text: '두 번째 이미지입니다.'},
-        {id: 3, text: '세 번째 이미지입니다.'},
-        {id: 4, text: '네 번째 이미지입니다.'},
-    ]
+    
     return (
         <Wrapper>
             <PageForm>
                 <TitleForm>
                     <ModifyButton onClick={modifyBtn}>수정하기</ModifyButton>
                     <Title>
-                        <span>제목 : </span>
+                        <span>제목: {title}</span>
                     </Title>
                     <DataForm>
                         <Writer>
-                            <span>작성자 : </span>
+                            <span>작성자 : {author}</span>
                         </Writer>
                         <DataTime>
-                            <span>작성시간: </span>
+                            <span>작성시간: {timestamp}</span>
                         </DataTime>
                     </DataForm>
                 </TitleForm>
                 <ImgForm>
                 {/* 대표사진 올리기 */}
-                <Img src={imgs[0].src} alt="대표이미지"></Img>
+                <Img src={images[0]} alt="대표이미지" />
                 </ImgForm>
                 
                 {/* 이미지 리스트 */}
                 <ImgsForm>
-                {imgs.map(img => (
-                    <Imgs key={img.id}>
-                        <img src={img.src} alt='이미지'/>
+                {images.map(images => (
+                    <Imgs key={images.id}>
+                        <img src={images} alt='이미지'/>
                     </Imgs>
                 ))}
                 </ImgsForm>
                 <ContentContainer>
                     <Content>
-                        <p>
-                            메인넣기
-                            
-                        </p>
+                        <p>{content}</p>
                         </Content>
                 </ContentContainer>
                     <Reclist>

@@ -28,6 +28,10 @@ export const MyProvider = ({ children }) => {
       password: "1234",
       content: `여행게시글 본문내용1`,
       timestamp: new Date().toLocaleString(),
+      comment: [{ id: 1, text: '우와! 멋지다!' },
+                { id: 2, text: '부럽다!' },
+                { id: 3, text: '나도 가고싶다 ㅠㅠ' },
+                ]
     },
     {
       id: 2,
@@ -37,6 +41,10 @@ export const MyProvider = ({ children }) => {
       password: "1234",
       content: `여행게시글 본문내용2`,
       timestamp: new Date().toLocaleString(),
+      comment: [{ id: 1, text: '우와!' },
+                { id: 2, text: '멋지다!' },
+                { id: 3, text: '나도 휴일좀... ㅠㅠ' },
+                ]
     },
     {
       id: 3,

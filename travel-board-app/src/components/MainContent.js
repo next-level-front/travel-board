@@ -59,7 +59,7 @@ function MainContent({ posts }) {
 
     // 더하기 버튼을 누르면 포스트를 더 볼 수 있음
     return () => {
-      document.querySelector(".btn2").removeEventListener("click", addPost);
+      // document.querySelector(".btn2").removeEventListener("click", addPost);
     };
   }, []);
 

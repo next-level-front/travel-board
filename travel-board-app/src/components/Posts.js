@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/stylesmain.css';
-import logo from '../../public/logo.png';
+import logo from '../../src/static/images/logo.png';
 
 const postHeader = 'post-header';
 const postLogoBox = 'post-logo-box';
