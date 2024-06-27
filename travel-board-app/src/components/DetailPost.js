@@ -6,13 +6,15 @@ import {
     Reclist, Reclists
 } from '../components/css/Detailstyles'; // Detailstyles.js로부터 스타일 컴포넌트 가져오기
 import UpdatePage from './UpdatePage/UpdatePage';
+import MyContext from '../contexts/MyContext';
 
 
-const DetailPost = ({post, comment1, handleView}) => {
+const DetailPost = ({post, handleView}) => {
     const { title, author, images, timestamp, content, comment} = post;
     const [commentInput, setCommentInput] = useState('');
     const [comments, setComments] = useState(comment);
     const [password, setPassword] = useState(null);
+    const { updateData } = useContext(MyContext);
 
     const submitBtn = (e) => {
         e.preventDefault();
@@ -20,6 +22,8 @@ const DetailPost = ({post, comment1, handleView}) => {
         if(commentInputs) {
             const newComment = {id: commentInput.length, text: commentInput};
             setComments([...comments, newComment]);
+            post.comment = comments;
+            updateData(post?.id, post);
             setCommentInput('');
         }
     }
