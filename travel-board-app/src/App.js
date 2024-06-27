@@ -12,11 +12,17 @@ import DetailPost from "./components/DetailPost";
 function App() {
   const { data } = useContext(MyContext);
   const [view, setView] = useState("home");
-  const [seletedItem, setSelectedItem] = useState(data?.[0]);
-  useEffect(() => {
-    setSelectedItem(data?.[0]);
-  }, [data]);
+  const [seletedItem, setSelectedItem] = useState();
+  const [isChangeSelectedItem, setIsChangeSelectedItem] = useState(false);
 
+  useEffect(() => {
+    if (isChangeSelectedItem && seletedItem) {
+      setView("details");
+    }
+    return () => {
+      setIsChangeSelectedItem(false);
+    };
+  }, [seletedItem, isChangeSelectedItem]);
   let content;
   switch (view) {
     case "home":
@@ -38,7 +44,7 @@ function App() {
             <MainContent
               posts={data}
               handleSeletedItem={setSelectedItem}
-              handleView={setView}
+              handleView={setIsChangeSelectedItem}
             />
           </div>
         </div>

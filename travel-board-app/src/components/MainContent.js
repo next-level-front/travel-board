@@ -5,8 +5,9 @@ function MainContent({ posts, handleView, handleSeletedItem }) {
   const [viewPost, setViewPost] = useState(5);
 
   const handleClick = (post) => {
+    console.log(post);
     handleSeletedItem(() => post);
-    handleView("details");
+    handleView(() => true);
   };
   return (
     <div className="main-content">

@@ -27,6 +27,8 @@ import {
 import MyContext from "../contexts/MyContext";
 
 const DetailPost = ({ post, handleView }) => {
+  console.log("postData");
+  console.log(post);
   const { title, author, images, timestamp, content, comments: comment } = post;
   const [commentInput, setCommentInput] = useState("");
   const [comments, setComments] = useState(comment);
