@@ -13,7 +13,6 @@ function App() {
   const { data } = useContext(MyContext);
   const [view, setView] = useState("home");
   const [seletedItem, setSelectedItem] = useState(data?.[0]);
-
   useEffect(() => {
     setSelectedItem(data?.[0]);
   }, [data]);
@@ -33,7 +32,7 @@ function App() {
             <button className="btn" onClick={() => setView("update")}>
               Update
             </button>
-            <MainContent />
+            <MainContent posts={data} />
           </div>
         </div>
       );
