@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect} from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 // Context 생성
 const MyContext = createContext();
@@ -23,12 +23,12 @@ export const MyProvider = ({ children }) => {
     setData(storedData);
   }, []);
 
-  const addData = (title, content, author, image) => {
-    const newData = [...data, { id: data.length + 1, title, content, author, image, timestamp:new Date().toLocaleString() }];
+  const addData = (title, content, author, image, password) => {
+    const newData = [...data, { id: data.length + 1, title, content, author, image, password, timestamp: new Date().toLocaleString() }];
     setData(newData);
     saveDataToLocalStorage('posts', newData);
   };
-  
+
   const updateData = (id, updateData) => {
     const updatedData = data.map((item) =>
       item.id === id ? { ...item, ...updateData } : item
@@ -42,7 +42,7 @@ export const MyProvider = ({ children }) => {
     setData(filteredData);
     saveDataToLocalStorage('posts', filteredData);
   };
-  
+
 
   return (
     <MyContext.Provider value={{ data, addData, updateData, deleteData }}>
