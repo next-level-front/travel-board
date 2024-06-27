@@ -35,7 +35,11 @@ function App() {
             <button className="btn" onClick={() => setView("details")}>
               detail
             </button>
-            <MainContent posts={data} />
+            <MainContent
+              posts={data}
+              handleSeletedItem={setSelectedItem}
+              handleView={setView}
+            />
           </div>
         </div>
       );
@@ -75,7 +79,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header handleView={setView} />
       <main>{content}</main>
       <Footer />
     </div>
