@@ -1,68 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/MainContent.css";
 
-function MainContent({ posts }) {
-  useEffect(() => {
-    const postList = document.getElementById("post-list");
+function MainContent({ posts, handleView, handleSeletedItem }) {
+  const [viewPost, setViewPost] = useState(5);
 
-    // Function to add a new post
-    function addPost(item, index) {
-      const post = document.createElement("div");
-      post.className = "post";
-      post.id = `post-${post.id}`;
-
-      post.innerHTML = `
-        <img src="${item.images[index]}" alt="Thumbnail">
-        <div class="content">
-          <div class="title">${item.title}</div>
-          <div class="description">${item.content}</div>
-        </div>
-      `;
-
-      postList.appendChild(post);
-    }
-    posts.forEach((post, index) => {
-      if (index < 5) {
-        addPost(post, index % 4);
-      }
-    });
-    // 예제 더미 데이터
-    // addPost(
-    //   1,
-    //   "Post Title 1",
-    //   "게시내용의 첫줄이나, 요약이 나옴.",
-    //   "https://via.placeholder.com/100"
-    // );
-    // addPost(
-    //   2,
-    //   "Post Title 2",
-    //   "게시내용의 첫줄이나, 요약이 나옴.",
-    //   "https://via.placeholder.com/100"
-    // );
-    // addPost(
-    //   3,
-    //   "Post Title 3",
-    //   "게시내용의 첫줄이나, 요약이 나옴.",
-    //   "https://via.placeholder.com/100"
-    // );
-
-    // 더하기 버튼을 클릭하면 나오는 기능
-    document.querySelector(".btn2").addEventListener("click", () => {
-      const nextId = postList.children.length + 1;
-      addPost(
-        nextId,
-        `Post Title ${nextId}`,
-        `This is a description for post ${nextId}.`,
-        "https://via.placeholder.com/100"
-      );
-    });
-
-    // 더하기 버튼을 누르면 포스트를 더 볼 수 있음
-    return () => {
-      document.querySelector(".btn2").removeEventListener("click", addPost);
-    };
-  }, []);
-
+  const handleClick = (post) => {
+    handleSeletedItem(() => post);
+    handleView("details");
+  };
   return (
     <div className="main-content">
       <div className="photo-area">
@@ -76,9 +21,32 @@ function MainContent({ posts }) {
         <button className="btn1">글쓰기</button>
       </div>
       <div className="content-area">
-        <div id="post-list"></div>
+        <div id="post-list">
+          {posts
+            .filter((post, index) => index < viewPost)
+            .map((post) => (
+              <div
+                className="post"
+                key={post.id}
+                onClick={() => handleClick(post)}
+              >
+                <img src={post.images[0]} alt="Thumbnail" />
+                <div className="content">
+                  <div className="title">{post.title}</div>
+                  <div className="description">{post.content}</div>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
-      <button className="btn2">더보기</button>
+      {posts.length !== viewPost && (
+        <button
+          className="btn2"
+          onClick={() => setViewPost((prev) => prev + 1)}
+        >
+          더보기
+        </button>
+      )}
     </div>
   );
 }

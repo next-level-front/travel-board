@@ -7,7 +7,7 @@ import "./App.css";
 import "./../src/components/css/MainContent.css";
 import MyContext from "./contexts/MyContext";
 import CreatePost from "./components/CreatePost";
-import Posts from "./components/Posts";
+import DetailPost from "./components/DetailPost";
 
 function App() {
   const { data } = useContext(MyContext);
@@ -32,7 +32,14 @@ function App() {
             <button className="btn" onClick={() => setView("update")}>
               Update
             </button>
-            <MainContent posts={data} />
+            <button className="btn" onClick={() => setView("details")}>
+              detail
+            </button>
+            <MainContent
+              posts={data}
+              handleSeletedItem={setSelectedItem}
+              handleView={setView}
+            />
           </div>
         </div>
       );
@@ -54,6 +61,14 @@ function App() {
         </div>
       );
       break;
+    case "details":
+      content = (
+        <div className="content-area">
+          <DetailPost post={seletedItem} handleView={setView} />
+        </div>
+      );
+
+      break;
     default:
       content = (
         <div className="content-area">
@@ -64,7 +79,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header handleView={setView} />
       <main>{content}</main>
       <Footer />
     </div>

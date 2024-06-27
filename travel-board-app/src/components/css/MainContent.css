@@ -1,3 +1,4 @@
+
 /* main-content 전체영역*/
 .main-content {
   padding: 2em;
@@ -11,16 +12,16 @@
 /* 메인이미지 영역 */
 .photo-area {
   background-color: #ecf2f1;
-  width: 80%;
-  height: 400px;
-  margin: 20px auto;
+  width: 80%; 
+  height: 400px; 
+  margin: 20px auto; 
 }
 
 
 .main-banner {
-  width: 90%;
-  height: 360px;
-  margin: 20px auto;
+  width: 90%; 
+  height: 360px; 
+  margin: 20px auto; 
 }
 
 .button-container {
@@ -87,7 +88,8 @@
 .post img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-right: 10px;
 }
 
@@ -105,3 +107,7 @@
   font-size: 14px;
   color: #4CB3AB;
 }
+
+
+
+
