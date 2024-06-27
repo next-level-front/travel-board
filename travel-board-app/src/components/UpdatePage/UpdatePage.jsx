@@ -151,9 +151,25 @@ const UpdatePage = ({ post, handleView }) => {
     setContent((prev) => e.target.value);
   };
   const handlePostDelete = () => {
-    deleteData(post?.id);
-    //navigate Logic
-    handleView("home");
+    const isSamePassword = checkPassword();
+    if (isSamePassword) {
+      deleteData(post?.id);
+      //navigate Logic
+      handleView("home");
+    } else {
+      alert("비밀번호가 같아야 삭제가 가능합니다.");
+      return;
+    }
+  };
+
+  const checkPassword = () => {
+    // const inputPassword = confirm("비밀번호를 입력해주세요.");
+    const inputPassword = window.prompt("비밀번호를 입력해주세요");
+    if (inputPassword === post.password) {
+      return true;
+    } else {
+      return false;
+    }
   };
   return (
     <>
